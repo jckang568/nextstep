@@ -1,6 +1,11 @@
 package calculator;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /*
@@ -17,8 +22,33 @@ public class StringCalculator {
         return 0;
     }
 
-    boolean isExistCustomDelimiter(String text){
+    boolean isExistCustomDelimiter(String text) {
+        return Pattern.compile("^//\\D\\\\n.*$").matcher(text).matches();
+    }
 
-        return false;
+    String getCustomDelimiter(String text) {
+        return text.substring(2, 3);
+    }
+
+    String getSplitInput(String input) {
+        return input.substring(5, input.length());
+    }
+
+    List<Integer> getIntegerList(String splitInput, String delimiter) {
+        StringTokenizer stringTokenizer = new StringTokenizer(splitInput, delimiter, false);
+        List<Integer> list = new ArrayList<>();
+        while(stringTokenizer.hasMoreTokens()){
+            list.add(Integer.valueOf(stringTokenizer.nextToken()));
+        }
+        return list;
+    }
+
+    int[] arrayListToList(List<Integer> integerList) {
+        return integerList.stream().mapToInt(i -> i).toArray();
+    }
+
+    int sum(int[] intList) {
+        return Arrays.stream(intList).sum();
     }
 }
+
