@@ -22,8 +22,25 @@ public class StringCalculator {
         return 0;
     }
 
+    List<Integer> getIntegerList(String splitInput) {
+        StringTokenizer stringTokenizer = new StringTokenizer(splitInput, ",", false);
+        List<String> stringList = new ArrayList<>();
+        List<Integer> integerList = new ArrayList<>();
+        while(stringTokenizer.hasMoreTokens()){
+            stringList.add(stringTokenizer.nextToken());
+        }
+        for(int i = 0; i < stringList.size() ; i ++ ) {
+            stringTokenizer = new StringTokenizer(stringList.get(i), ":", false);
+            while(stringTokenizer.hasMoreTokens()){
+                integerList.add(Integer.valueOf(stringTokenizer.nextToken()));
+            }
+        }
+        return integerList;
+    }
+
+
     boolean isExistCustomDelimiter(String text) {
-        return Pattern.compile("^//\\D\\\\n.*$").matcher(text).matches();
+        return Pattern.compile("^//\\D\\n.*$").matcher(text).matches();
     }
 
     String getCustomDelimiter(String text) {
@@ -31,7 +48,7 @@ public class StringCalculator {
     }
 
     String getSplitInput(String input) {
-        return input.substring(5, input.length());
+        return input.substring(4, input.length());
     }
 
     List<Integer> getIntegerList(String splitInput, String delimiter) {
