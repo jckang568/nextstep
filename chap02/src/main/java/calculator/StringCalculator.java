@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
     3. 문자열 계산기에 음수를 전달하는 경우 RuntimeException으로 예외 처리해야 한다.
  */
 public class StringCalculator {
+
     int add(String text) {
         return 0;
     }
