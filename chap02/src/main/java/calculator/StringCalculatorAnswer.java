@@ -29,11 +29,6 @@ public class StringCalculatorAnswer {
             }
             return converted;
         }).toArray();
-        /*int [] numbers = new int[values.length];
-        for(int i = 0 ; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
-        }
-        return numbers;*/
     }
 
     private int sum(int[] numbers) {

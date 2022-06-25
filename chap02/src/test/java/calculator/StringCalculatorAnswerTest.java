@@ -34,30 +34,26 @@ public class StringCalculatorAnswerTest {
     }
 
     @Test
-    public void add_쉼표_또는_콜론_구분자() throws Exception {
+    public void add_쉼표_또는_콜론_구분자() {
         assertEquals(6, stringCalculatorAnswer.add("1,2:3"));
     }
 
     @Test
-    public void add_custom_구분자() throws Exception {
+    public void add_custom_구분자() {
         assertEquals(6, stringCalculatorAnswer.add("//;\n1;2;3"));
     }
 
     @Test
-    public void add_negative() throws Exception {
-        assertThrows(RuntimeException.class, () -> {
-            stringCalculatorAnswer.add("-1,2,3");
-        });
+    public void add_negative() {
+        assertThrows(RuntimeException.class, () -> stringCalculatorAnswer.add("-1,2,3"));
 
     }
 
-
-
     @Test
-    public void test2(){
+    public void splitLimitTest() {
         String testInput = "boo:and:foo";
         String[] values = testInput.split("o", 0);
-        for(String value:values){
+        for (String value : values) {
             System.out.println("value = " + value);
         }
     }
